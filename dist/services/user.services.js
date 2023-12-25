@@ -51,6 +51,9 @@ class UserService {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const userId = req.params.id;
+                if (!userId) {
+                    return callback(null, { status: responseCodes_1.HttpCodes['API_FAILURE'], msg: 'UserIdRequired', code: responseCodes_1.HttpCodes['BAD_REQUEST'] });
+                }
                 // Validate if userId is a valid UUID
                 if (!isUUID(userId)) {
                     return callback(null, { 'status': responseCodes_1.HttpCodes['API_FAILURE'], 'msg': 'InvalidUserId', code: responseCodes_1.HttpCodes['BAD_REQUEST'], data: [] });
@@ -97,6 +100,9 @@ class UserService {
             try {
                 const userId = req.params.id;
                 const { username, age, hobbies } = req.body;
+                if (!userId) {
+                    return callback(null, { status: responseCodes_1.HttpCodes['API_FAILURE'], msg: 'UserIdRequired', code: responseCodes_1.HttpCodes['BAD_REQUEST'] });
+                }
                 const userInfo = yield models.User.findOne({ where: { id: userId } });
                 if (!userInfo) {
                     return callback(null, { 'status': responseCodes_1.HttpCodes['API_FAILURE'], 'msg': 'UserNotFound', code: responseCodes_1.HttpCodes['NOT_FOUND'], data: [] });

@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "tsc && node dist/bin/www.js",
-    "start": "node_modules\\.bin\\nodemon.cmd -e ts --exec \"npm run compile\""
+    "start:dev": "nodemon -e ts --exec \"npm run compile\"",
+    "start:prod": "npm run build && node dist/bin/www.js",
+    "build": "tsc"
   },
   "author": "",
   "license": "ISC",

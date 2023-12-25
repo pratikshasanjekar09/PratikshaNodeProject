@@ -2,7 +2,10 @@
 	"api": {
 		"errors": {
 			"SomeThingWentWrong": "Something went wrong",
-			"UserNotFound": "User Not Found"
+			"UserNotFound": "User Not Found",
+			"UsernameRequired": "Username is Required",
+			"AgeRequired": "Age is Required",
+			"hobbiesRequired": "Hobby is Required"
 		},
 		"msg": {
 			"APISuccess": "Success",
