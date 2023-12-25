@@ -44,6 +44,10 @@ export default class UserService {
     try {
       const userId = req.params.id;
 
+      if (!userId) {
+        return callback(null, { status: HttpCodes['API_FAILURE'], msg: 'UserIdRequired', code: HttpCodes['BAD_REQUEST'] });
+      }
+
       // Validate if userId is a valid UUID
       if (!isUUID(userId)) {
         return callback(null, { 'status': HttpCodes['API_FAILURE'], 'msg': 'InvalidUserId', code: HttpCodes['BAD_REQUEST'], data: [] });
@@ -91,6 +95,12 @@ export default class UserService {
     try {
       const userId = req.params.id;
       const { username, age, hobbies } = req.body;
+
+      
+      if (!userId) {
+        return callback(null, { status: HttpCodes['API_FAILURE'], msg: 'UserIdRequired', code: HttpCodes['BAD_REQUEST'] });
+      }
+
       const userInfo = await models.User.findOne({ where: { id: userId } });
 
       if (!userInfo) {
